@@ -1,6 +1,5 @@
-// PascalCase = Primeira letra da palavra fica com maiúsculo
-// App
-// HeaderHeading
+import './styles/theme.css';
+import './styles/global.css';
 
 export function App() {
   console.log('Oi');
