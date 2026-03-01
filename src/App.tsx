@@ -1,4 +1,3 @@
-import { Heading } from './components/Heading';
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
@@ -12,34 +11,10 @@ import { PlayCircleIcon } from 'lucide-react';
 
 import './styles/theme.css';
 import './styles/global.css';
-import { useState } from 'react';
 
 export function App() {
-  // Quero que todos os componentes que usam "numero"
-  // saibam das mudanças em seu valor.
-
-  // Sempre que usar useState, não usar atribuição diretamente.
-
-  // const [numero, setNumero] = useState(() => {
-  //    console.log('Lazy initialization');
-  //    return 0;
-  // });
-
-  const [numero, setNumero] = useState(0);
-
-  function handleClick() {
-    // Não usar diretamente o número, pois o valor só será atualizado
-    // quando a página renderizar novamente. A função prevState serve para
-    // corrigir este problema.
-    setNumero(prevState => prevState + 1);
-  }
-
   return (
     <>
-      <Heading>Número: {numero}</Heading>
-
-      <button onClick={handleClick}>Aumenta</button>
-
       <Container>
         <Logo />
       </Container>
@@ -55,7 +30,7 @@ export function App() {
       <Container>
         <form className='form' action=''>
           <div className='formRow'>
-            <DefaultInput labelText={numero.toString()} id='meuInput' type='text' placeholder='Digite algo' />
+            <DefaultInput labelText='Task' id='meuInput' type='text' placeholder='Digite algo' />
           </div>
 
           <div className='formRow'>
