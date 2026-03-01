@@ -12,25 +12,32 @@ import { PlayCircleIcon } from 'lucide-react';
 
 import './styles/theme.css';
 import './styles/global.css';
+import { useState } from 'react';
 
 export function App() {
-  let numero = 0;
+  // Quero que todos os componentes que usam "numero"
+  // saibam das mudanças em seu valor.
+
+  // Sempre que usar useState, não usar atribuição diretamente.
+
+  // const [numero, setNumero] = useState(() => {
+  //    console.log('Lazy initialization');
+  //    return 0;
+  // });
+
+  const [numero, setNumero] = useState(0);
 
   function handleClick() {
-    const span = document.getElementById('numero');
-
-    if (!span) return;
-
-    numero += 1;
-    span.innerText = numero.toString();
-    console.log(numero, Date.now());
+    // Não usar diretamente o número, pois o valor só será atualizado
+    // quando a página renderizar novamente. A função prevState serve para
+    // corrigir este problema.
+    setNumero(prevState => prevState + 1);
   }
 
   return (
     <>
-      <Heading>
-        Número: <span id='numero'>{numero}</span>
-      </Heading>
+      <Heading>Número: {numero}</Heading>
+
       <button onClick={handleClick}>Aumenta</button>
 
       <Container>
